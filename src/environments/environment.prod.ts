@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url_base: 'https://agile-earth-82474.herokuapp.com'
 };
