@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { map } from 'rxjs/operators';
 export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
-  url_authentication = 'http://localhost:8080/login';
+  //url_authentication = 'http://localhost:8080/login';
+  url_authentication = 'https://agile-earth-82474.herokuapp.com/login';
 
   login(username: string, password: string) {
       return this.http.post<any>(this.url_authentication, { username: username, password: password })
