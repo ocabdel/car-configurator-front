@@ -1,0 +1,78 @@
+<div class="my-2">
+  <p class="lead">
+    <a class="btn btn-primary btn-mg"
+    [routerLink]="['/addConfiguration']"
+    routerLinkActive="router-link-active"
+    role="button"
+    *ngIf="isLoggedIn() && getJwtSubjet()=='admin'"
+    >Create A new Configuration</a>
+  </p>
+</div>
+<div class="my-2">
+</div>
+<div class="card">
+ <div class="card-header text-white bg-dark">
+     <h5>All Configurations </h5>
+ </div>
+ <div class="card-body">
+   <table id="my-table" class="table table-bordered table-striped">
+     <thead>
+       <tr>
+         <th>Id Number</th>
+         <th>Marque</th>
+         <th>Model</th>
+         <th>Motor</th>
+         <th>Color</th>
+         <th>Name Pack</th>
+         <th>Id User</th>
+         <th>Total Price</th>
+         <th>Date Configuration</th>
+         <th>Status</th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor='let item of data'>
+         <td> {{item.idConfig}}</td>
+         <td> {{item.marque}}</td>
+         <td> {{item.model}}</td>
+         <td> {{item.motor}}</td>
+         <td> {{item.color}}</td>
+         <td> {{item.namePack}}</td>
+         <td> {{item.idUser}}</td>
+         <td> {{item.totalPrice}}</td>
+         <td> {{item.dateConfig}}</td>
+         <td> {{item.status}}</td>
+         <td class="text-center ">
+           <!-- <button type="button" class="btn btn-sm btn-info"  [routerLink]="['/detailConfiguration/', item.idConfig]"> Détails</button> -->
+           <button type="button" class="btn btn-sm btn-secondary ml-1"> Edit</button>
+           <button type="button" class="btn btn-sm btn-danger ml-1" [routerLink]="['/deleteConfiguration/', item.idConfig]"> Delete</button>
+         </td>
+       </tr>
+     </tbody>
+     <input class="btn btn-secondary btn-mg"
+        type="button"
+        value="Generate PDF"
+        (click) = "doGeneratePDF_FromTable()">
+   </table>
+ </div>
+
+</div>
+<div class="d-flex justify-content-center"> <!-- For the pagination ...-->
+  <ngb-pagination
+       [collectionSize]="totalElements"
+       [(page)]="page"
+       [pageSize]="pageSize"
+       [ellipses]="false"
+       [boundaryLinks]="true"
+       size="mg"
+       (pageChange)="loadPageFromServer($event)">  <!-- Server Side Request happens here ...-->
+   </ngb-pagination>
+ </div>
+ <div>
+  <h6 class="card-header text-white bg-info">Legend field 'STATUS' : </h6>
+  <p>O = Open (Configuration created by the User !</p>
+  <p>T = Treated or Closed (Configuration treated by the Admin !</p>
+  <p>A = Abandoned (Configuration abandoned by the User !</p>
+</div>
+

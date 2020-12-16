@@ -1,0 +1,39 @@
+<div class="card mt-3">
+  <div class="card-header bg-danger text-white">
+   <h5> Resume Pack {{user.idUser}} </h5>
+  </div>
+  <div class="card-body col-6 offset-1">
+    <table class="table table-bordred table-striped">
+       <tbody>
+        <tr>
+          <td>Id User</td>
+          <td>{{user.idUser}}</td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>{{user.nom}}</td>
+        </tr>
+        <tr>
+          <td>First Name</td>
+          <td>{{user.prenom}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <td>Username</td>
+          <td>{{user.username}}</td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td>{{user.password}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="">
+     <button type="button" class="btn btn-info" (click)= 'cancelDelete()'> Cancel Suppression !</button>
+     <button type="button" class="btn btn-danger ml-2" (click)= 'confirmDelete()' > Confirm Suppression !</button>
+  </div>
+</div>

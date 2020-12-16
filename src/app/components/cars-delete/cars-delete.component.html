@@ -1,0 +1,43 @@
+<div class="card mt-3">
+  <div class="card-header bg-danger text-white">
+   <h5> Resume Car {{car.idCar}} </h5>
+  </div>
+  <div class="card-body col-6 offset-1">
+    <table class="table table-bordred table-striped">
+       <tbody>
+        <tr>
+          <td>Id Car</td>
+          <td>{{car.idCar}}</td>
+        </tr>
+        <tr>
+            <td>Marque</td>
+            <td>{{car.marque}}</td>
+        </tr>
+        <tr>
+            <td>Model</td>
+            <td>{{car.model}}</td>
+        </tr>
+        <tr>
+          <td>Motor</td>
+          <td>{{car.motor}}</td>
+        </tr>
+        <tr>
+          <td>Reference</td>
+          <td>{{car.reference}}</td>
+        </tr>
+        <tr>
+          <td>Color</td>
+          <td>{{car.color}}</td>
+        </tr>
+        <tr>
+            <td>UnitPrice</td>
+            <td>{{car.unitPrice}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="">
+     <button type="button" class="btn btn-info" (click)= 'cancelDelete()'> Cancel Suppression !</button>
+     <button type="button" class="btn btn-danger ml-2" (click)= 'confirmDelete()' > Confirm Suppression !</button>
+  </div>
+</div>

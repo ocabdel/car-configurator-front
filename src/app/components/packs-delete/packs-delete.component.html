@@ -1,0 +1,31 @@
+<div class="card mt-3">
+  <div class="card-header bg-danger text-white">
+   <h5> Resume Pack {{pack.idPack}} </h5>
+  </div>
+  <div class="card-body col-6 offset-1">
+    <table class="table table-bordred table-striped">
+       <tbody>
+        <tr>
+          <td>Id Pack</td>
+          <td>{{pack.idPack}}</td>
+        </tr>
+        <tr>
+            <td>Name Pack</td>
+            <td>{{pack.namePack}}</td>
+        </tr>
+        <tr>
+          <td>Reference</td>
+          <td>{{pack.reference}}</td>
+        </tr>
+        <tr>
+            <td>UnitPrice</td>
+            <td>{{pack.unitPrice}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="">
+     <button type="button" class="btn btn-info" (click)= 'cancelDelete()'> Cancel Suppression !</button>
+     <button type="button" class="btn btn-danger ml-2" (click)= 'confirmDelete()' > Confirm Suppression !</button>
+  </div>
+</div>

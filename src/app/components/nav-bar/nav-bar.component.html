@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  &nbsp;&nbsp;
+  <a class="navbar-brand" href="/">Car Configurator Online</a>
+  <button (click) = "isCollapsed = !isCollapsed"
+      class="navbar-toggler d-lg-none" type="button"
+      data-toggle="collapse" data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+  <div [ngbCollapse]=isCollapsed class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">
+            Home <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/cars']"
+            routerLinkActive="router-link-active" >
+            Cars in Stock
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/packs']"
+            routerLinkActive="router-link-active" >
+            Packs Available
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink= '/configurations'
+            *ngIf="isLoggedIn() && getJwtSubjet()=='admin'">
+            Configurations
+            <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink= '/user'
+            *ngIf="isLoggedIn() && getJwtSubjet()=='admin'">
+            Users
+            <span class="sr-only">(current)</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <a class="btn btn-primary btn-lg"
+          [routerLink]="['/configuratorStart']"
+          routerLinkActive="router-link-active"
+          role="button">Configurator Start</a>
+      <a class="nav-link" href="/">
+        About us <span class="sr-only">(current)</span>
+      </a>
+      <li class="nav-item" *ngIf= !isLoggedIn()>
+          <a class="nav-link"  [routerLink]="['/login']"
+            [queryParams]="{  'returnUrl' : '/welcome' }">
+            Login </a>
+      </li>
+      <li class="nav-item" *ngIf= isLoggedIn()>
+          <a class="nav-link" routerLink= '/logout'>
+            Logout </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text"
+      [(ngModel)]='data'
+      (input) = 'envoyerChangement()'
+      name="critere"
+      type="text" placeholder="Search"
+      >
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+  &nbsp;&nbsp;
+</nav>

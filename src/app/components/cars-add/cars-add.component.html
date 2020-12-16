@@ -1,0 +1,114 @@
+<div class="card offset-lg-2 col-lg-8">
+  <div class="card-header bg-dark text-white">
+    <h4>New Car Creation Form</h4>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid">
+    <form [formGroup]="form" (ngSubmit)="addCar(form.value)" novalidate>
+     <div class="form-group row">
+        <label  class= "col-lg-3 col-form-label">Marque</label>
+        <div class="col-lg-4">
+           <input
+           formControlName = "marque"
+           type="text" class="form-control"
+           name=""
+           aria-describedby="helpId" placeholder="">
+        </div>
+        <div  *ngIf="form.get('marque').touched && form.get('marque').invalid" class="col-lg-5 text text-danger" id="msg1">
+          <div> The Marque is required</div>
+        </div>
+     </div>
+     <div class="form-group row">
+      <label  class= "col-lg-3 col-form-label">Model</label>
+      <div class="col-lg-4">
+         <input
+         formControlName = "model"
+         type="text" class="form-control"
+         name=""
+         aria-describedby="helpId" placeholder="">
+      </div>
+      <div  *ngIf="form.get('model').touched && form.get('model').invalid" class="col-lg-5 text text-danger" id="msg2">
+        <div> The Model is required</div>
+      </div>
+     </div>
+     <div class="form-group row">
+      <label  class= "col-lg-3 col-form-label">Motorisation</label>
+      <div class="col-lg-4">
+         <input
+         formControlName = "motor"
+         type="text" class="form-control"
+         name=""
+         aria-describedby="helpId" placeholder="">
+      </div>
+      <div  *ngIf="form.get('motor').touched && form.get('motor').invalid" class="col-lg-5 text text-danger" id="msg3">
+        <div> The Motor is required</div>
+      </div>
+     </div>
+     <div class="form-group row">
+      <label  class= "col-lg-3 col-form-label">Color</label>
+      <div class="col-lg-4">
+         <input
+         formControlName = "color"
+         type="text" class="form-control"
+         name=""
+         aria-describedby="helpId" placeholder="">
+      </div>
+      <div  *ngIf="form.get('color').touched && form.get('color').invalid" class="col-lg-5 text text-danger" id="msg4">
+        <div> The Color is required</div>
+      </div>
+     </div>
+     <div class="form-group row">
+      <label  class= "col-lg-3 col-form-label">Référence</label>
+      <div class="col-lg-4">
+         <input
+         formControlName = "reference"
+         type="text" class="form-control"
+         name=""
+         aria-describedby="helpId" placeholder="">
+      </div>
+      <div  *ngIf="form.get('reference').touched && form.get('reference').invalid" class="col-lg-5 text text-danger" id="msg5">
+        <div> The Reference is required</div>
+      </div>
+   </div>
+     <div class="form-group row">
+        <label  class= "col-lg-3 col-form-label">Unit Price</label>
+        <div class="col-lg-4">
+           <input
+           formControlName = "unitPrice"
+           type="text" class="form-control"
+           name=""
+           aria-describedby="helpId" placeholder="">
+        </div>
+        <div *ngIf="form.get('unitPrice').touched && form.get('unitPrice').invalid" class="col-lg-5 text text-danger" id="msg5">
+          <div *ngIf="form.controls['unitPrice'].errors.required"> The price is required</div>
+          <div *ngIf="form.controls['unitPrice'].errors.pattern"> The price should be numeric</div>
+        </div>
+     </div>
+     <div class="form-group row">
+      <label class= "col-lg-3 col-form-label">Image URL</label>
+      <div class="col-lg-4">
+          <input formControlName = "imageURL"
+          type="text" class="form-control"
+          name=""
+          aria-describedby="helpId" placeholder="">
+      </div>
+      <div *ngIf="form.get('imageURL').touched && form.get('imageURL').invalid" class="col-lg-5 text text-danger" id="msg7">
+          <div> The Image URL is required</div>
+      </div>
+    </div>
+     <div class="form-group row">
+        <div class="offset-lg-3 col-lg-8">
+              <button type="submit"   class="btn btn-primary"
+                [disabled]="form.invalid">Add to the catalogue</button>
+                &nbsp;&nbsp;
+              <button type= "reset"  class="btn btn-info">Reset</button>
+        </div>
+        <div>
+          <button type="button" class="btn btn-sm btn-secondary ml-1"
+          [routerLink]="['/cars']">Return</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+</div>

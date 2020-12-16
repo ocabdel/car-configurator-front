@@ -1,0 +1,57 @@
+<div class="card offset-lg-2 col-lg-8">
+  <div class="card-header bg-dark text-white">
+    <h4>Login Form</h4>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid">
+<form class="mt-2" #f="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="username">Nom de l'utilisateur</label>
+    <input type="text"
+          class="form-control"
+          name="username"
+          id="username"
+          [(ngModel)]="user.username"
+          required
+          #nom= "ngModel">
+    <div class="alert alert-danger" *ngIf="nom.touched && nom.invalid">
+          Le nom de l'utilisateur est obligatoire
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="pass">Password</label>
+      <input type="password"
+            class="form-control"
+            name="pass"
+            id="pass"
+            [(ngModel)]="user.password"
+            required
+            #pass="ngModel" >
+      <div class="alert alert-danger" *ngIf="pass.touched && pass.invalid">
+           Le mot de passe est obligatoire
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-lg-3 col-lg-8">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="!f.valid" >
+                Login</button>
+        &nbsp;&nbsp;
+        <button type="reset"
+                class="btn btn-primary">
+                Reset</button>
+      </div>
+     </div>
+      <li class="nav-item">
+        <a class="nav-item"
+            href="/register"
+            routerLinkActive="router-link-active" >
+            Register? Sign up
+        </a>
+      </li>
+     <a class="dropdown-item" href="#">Forgot password?</a>
+</form>
+    </div>
+  </div>
+</div>

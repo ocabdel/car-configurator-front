@@ -1,0 +1,55 @@
+<div class="card mt-3">
+  <div class="card-header bg-danger text-white">
+   <h5> Resume Configuration {{configuration.idConfig}} </h5>
+  </div>
+  <div class="card-body col-6 offset-1">
+    <table class="table table-bordred table-striped">
+       <tbody>
+        <tr>
+          <td>Id Configuration</td>
+          <td>{{configuration.idConfig}}</td>
+        </tr>
+        <tr>
+          <td>Marque</td>
+          <td>{{configuration.marque}}</td>
+        </tr>
+        <tr>
+          <td>Model</td>
+          <td>{{configuration.model}}</td>
+        </tr>
+        <tr>
+          <td>Motor</td>
+          <td>{{configuration.motor}}</td>
+        </tr>
+        <tr>
+          <td>Color</td>
+          <td>{{configuration.color}}</td>
+        </tr>
+        <tr>
+          <td>Name Pack</td>
+          <td>{{configuration.namePack}}</td>
+        </tr>
+        <tr>
+          <td>Id User</td>
+          <td>{{configuration.idUser}}</td>
+        </tr>
+        <tr>
+          <td>Date Configuration</td>
+          <td>{{configuration.dateConfig}}</td>
+        </tr>
+        <tr>
+          <td>Total Price</td>
+          <td>{{configuration.totalPrice}}</td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td>{{configuration.status}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="">
+     <button type="button" class="btn btn-info" (click)= 'cancelDelete()'> Cancel Suppression !</button>
+     <button type="button" class="btn btn-danger ml-2" (click)= 'confirmDelete()' > Confirm Suppression !</button>
+  </div>
+</div>

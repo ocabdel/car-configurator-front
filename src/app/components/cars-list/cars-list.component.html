@@ -1,0 +1,70 @@
+<div class="my-2">
+  <p class="lead">
+    <a class="btn btn-primary btn-mg"
+    [routerLink]="['/addCar']"
+    routerLinkActive="router-link-active"
+    role="button"
+    *ngIf="isLoggedIn() && getJwtSubjet()=='admin'"
+    >Create A new Car</a>
+  </p>
+</div>
+<div class="card">
+ <div class="card-header text-white bg-dark">
+     <h5>All Cars in Stock </h5>
+ </div>
+ <div class="card-body">
+   <table id="my-table" class="table table-bordered table-striped">
+     <thead>
+       <tr>
+         <th>Id Number</th>
+         <th>Marque</th>
+         <th>Model</th>
+         <th>Reference</th>
+         <th>Motor</th>
+         <th>Color</th>
+         <th>UnitPrice</th>
+         <th>Image URL</th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor='let item of data'>
+         <td> {{item.idCar}}</td>
+         <td> {{item.marque}}</td>
+         <td> {{item.model}}</td>
+         <td> {{item.reference}}</td>
+         <td> {{item.motor}}</td>
+         <td> {{item.color}}</td>
+         <td> {{item.unitPrice}}</td>
+         <td> {{item.imageURL}}</td>
+         <td class="text-center ">
+           <!-- <button type="button" class="btn btn-sm btn-info"  [routerLink]="['/detailCar/', item.idCar]"> Détails</button> -->
+           <button type="button"
+                    class="btn btn-sm btn-secondary ml-1"
+                    *ngIf="isLoggedIn() && getJwtSubjet()=='admin'"> Edit</button>
+           <button type="button" class="btn btn-sm btn-danger ml-1"
+                    [routerLink]="['/deleteCar/', item.idCar]"
+                    *ngIf="isLoggedIn() && getJwtSubjet()=='admin'"> Delete</button>
+         </td>
+       </tr>
+     </tbody>
+     <input class="btn btn-secondary btn-mg"
+        type="button"
+        value="Generate PDF"
+        (click) = "doGeneratePDF_FromTable()">
+   </table>
+ </div>
+
+</div>
+<div class="d-flex justify-content-center"> <!-- For the pagination ...-->
+  <ngb-pagination
+       [collectionSize]="totalElements"
+       [(page)]="page"
+       [pageSize]="pageSize"
+       [ellipses]="false"
+       [boundaryLinks]="true"
+       size="mg"
+       (pageChange)="loadPageFromServer($event)">  <!-- Server Side Request happens here ...-->
+   </ngb-pagination>
+ </div>
+

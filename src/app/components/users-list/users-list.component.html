@@ -1,0 +1,66 @@
+
+<div class="my-2">
+  <p class="lead">
+    <a class="btn btn-primary btn-mg"
+    [routerLink]="['/register']"
+    routerLinkActive="router-link-active"
+    role="button"
+    *ngIf="isLoggedIn() && getJwtSubjet()=='admin'">Create A new User</a>
+  </p>
+</div>
+<div class="card">
+ <div class="card-header text-white bg-dark">
+     <h5>All Users </h5>
+ </div>
+ <div class="card-body">
+   <table id="my-table" class="table table-bordered table-striped">
+     <thead>
+       <tr>
+         <th>Id User</th>
+         <th>Last Name</th>
+         <th>First Name</th>
+         <th>Email</th>
+         <th>Username</th>
+         <th>Password</th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor='let item of data'>
+         <td> {{item.idUser}}</td>
+         <td> {{item.nom}}</td>
+         <td> {{item.prenom}}</td>
+         <td> {{item.email}}</td>
+         <td> {{item.username}}</td>
+         <td> {{item.password}}</td>
+         <td class="text-center ">
+           <!-- <button type="button" class="btn btn-sm btn-info"  [routerLink]="['/detailPack/', item.idPack]"> Détails</button> -->
+           <button type="button"
+                    class="btn btn-sm btn-secondary ml-1"
+                    *ngIf="isLoggedIn() && getJwtSubjet()=='admin'"> Edit</button>
+           <button type="button"
+                    class="btn btn-sm btn-danger ml-1"
+                    [routerLink]="['/deleteUser/', item.idUser]"
+                    *ngIf="isLoggedIn() && getJwtSubjet()=='admin'"> Delete</button>
+         </td>
+       </tr>
+     </tbody>
+     <input class="btn btn-secondary btn-mg"
+        type="button"
+        value="Generate PDF"
+        (click) = "doGeneratePDF_FromTable()">
+   </table>
+ </div>
+
+</div>
+<div class="d-flex justify-content-center"> <!-- For the pagination ...-->
+  <ngb-pagination
+       [collectionSize]="totalElements"
+       [(page)]="page"
+       [pageSize]="pageSize"
+       [ellipses]="false"
+       [boundaryLinks]="true"
+       size="mg"
+       (pageChange)="loadPageFromServer($event)">  <!-- Server Side Request happens here ...-->
+   </ngb-pagination>
+ </div>
