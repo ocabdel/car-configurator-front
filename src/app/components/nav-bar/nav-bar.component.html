@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   &nbsp;&nbsp;
-  <a class="navbar-brand" href="/">Car Configurator Online</a>
+  <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active" >Car Configurator Online</a>
   <button (click) = "isCollapsed = !isCollapsed"
       class="navbar-toggler d-lg-none" type="button"
       data-toggle="collapse" data-target="#collapsibleNavId"
@@ -12,7 +12,7 @@
   <div [ngbCollapse]=isCollapsed class="collapse navbar-collapse" id="collapsibleNavId">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="/">
+        <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">
             Home <span class="sr-only">(current)</span>
         </a>
       </li>
@@ -48,7 +48,7 @@
           [routerLink]="['/configuratorStart']"
           routerLinkActive="router-link-active"
           role="button">Configurator Start</a>
-      <a class="nav-link" href="/">
+      <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">
         About us <span class="sr-only">(current)</span>
       </a>
       <li class="nav-item" *ngIf= !isLoggedIn()>
